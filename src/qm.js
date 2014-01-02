@@ -261,11 +261,11 @@ qm.func.getOne1DiffFrom2BinStrCompare = function (a, b, mark) {
             return ""; // the marks for a and b are at difference locations.
         }
     }
-    var aDec = parseInt(a.replace(markRE, 0), 2),
-    bDec = parseInt(b.replace(markRE, 0), 2),
+    var aBin = parseInt(a.replace(markRE, 0), 2),
+    bBin = parseInt(b.replace(markRE, 0), 2),
     // binaryStr must use the biggest number to avoid losing digits positions.
-    binaryStr = qm.func.getBinaryStrFromDecimal((bDec < aDec) ? aDec : bDec, (bDec < aDec) ? a.length : b.length),
-    c = qm.func.getBinaryStrFromDecimal((aDec^bDec), binaryStr.length);
+    binaryStr = qm.func.getBinaryStrFromDecimal((bBin < aBin) ? aBin : bBin, (bBin < aBin) ? a.length : b.length),
+    c = qm.func.getBinaryStrFromDecimal((aBin^bBin), binaryStr.length);
     
     if ((c.match(/1/g) || []).length !== 1) {
         // there is not exactly one 1 difference.
